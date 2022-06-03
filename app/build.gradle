@@ -43,3 +43,11 @@ dependencies {
     androidTestImplementation 'androidx.test.espresso:espresso-contrib:3.3.0'
     androidTestImplementation 'androidx.test.espresso:espresso-intents:3.3.0'
 }
+
+sonarqube {
+    properties {
+        property "sonar.projectKey", "maheshl99_ExpenseManager_CI_CD"
+        property "sonar.organization", "maheshl99"
+        property "sonar.host.url", "https://sonarcloud.io"
+    }
+}
