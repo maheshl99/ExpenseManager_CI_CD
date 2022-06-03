@@ -47,7 +47,7 @@ public class ExpenseDatabaseHelper extends SQLiteOpenHelper {
 
     if(isCursorPopulated(cursor)){
       do {
-        String type = cursor.getString(cursor.getColumnIndex(ExpenseTypeTable.TYPE));
+        String type = cursor.getString(cursor.getColumnIndexOrThrow(ExpenseTypeTable.TYPE));
         expenseTypes.add(type);
       } while(cursor.moveToNext());
     }
@@ -121,10 +121,10 @@ public class ExpenseDatabaseHelper extends SQLiteOpenHelper {
     List<Expense> expenses = new ArrayList<>();
     if(isCursorPopulated(cursor)){
       do {
-        String type = cursor.getString(cursor.getColumnIndex(ExpenseTable.TYPE));
-        String amount = cursor.getString(cursor.getColumnIndex(ExpenseTable.AMOUNT));
-        String date = cursor.getString(cursor.getColumnIndex(ExpenseTable.DATE));
-        String id = cursor.getString(cursor.getColumnIndex(ExpenseTable._ID));
+        String type = cursor.getString(cursor.getColumnIndexOrThrow(ExpenseTable.TYPE));
+        String amount = cursor.getString(cursor.getColumnIndexOrThrow(ExpenseTable.AMOUNT));
+        String date = cursor.getString(cursor.getColumnIndexOrThrow(ExpenseTable.DATE));
+        String id = cursor.getString(cursor.getColumnIndexOrThrow(ExpenseTable._ID));
 
         Expense expense = id == null ? new Expense(parseLong(amount), type, date) : new Expense(parseInt(id), parseLong(amount), type, date);
         expenses.add(expense);
