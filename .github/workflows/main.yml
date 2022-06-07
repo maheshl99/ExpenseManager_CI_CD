@@ -16,7 +16,6 @@ on:
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
   lint:
-    name: lint-check
     runs-on: ubuntu-latest
     steps:
       - name: Checkout the code
@@ -30,7 +29,7 @@ jobs:
           path: app/build/reports/lint-results-debug.html
 
   unit-test:
-    needs: [ lint-check ]
+    needs: [ lint ]
     runs-on: ubuntu-latest
     steps:
       - name: Checkout the code
