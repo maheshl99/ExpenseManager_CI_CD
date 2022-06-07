@@ -15,39 +15,39 @@ on:
 
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
-  lint-check:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout the code
-        uses: actions/checkout@v2
-
-      - name: Run Lint
-        run: ./gradlew lintDebug
-
-      - name: Upload html test report
-        uses: actions/upload-artifact@v2
-        with:
-          name: lint.html
-          path: app/build/reports/lint-results-debug.html
-
-  unit-test:
-    needs: [ lint-check ]
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout the code
-        uses: actions/checkout@v2
-
-      - name: Run tests
-        run: ./gradlew test
-
-      - name: Upload test report
-        uses: actions/upload-artifact@v2
-        with:
-          name: unit_test_report
-          path: app/build/reports/tests/testDebugUnitTest/
+#  lint-check:
+#    runs-on: ubuntu-latest
+#    steps:
+#      - name: Checkout the code
+#        uses: actions/checkout@v2
+#
+#      - name: Run Lint
+#        run: ./gradlew lintDebug
+#
+#      - name: Upload html test report
+#        uses: actions/upload-artifact@v2
+#        with:
+#          name: lint.html
+#          path: app/build/reports/lint-results-debug.html
+#
+#  unit-test:
+#    needs: [ lint-check ]
+#    runs-on: ubuntu-latest
+#    steps:
+#      - name: Checkout the code
+#        uses: actions/checkout@v2
+#
+#      - name: Run tests
+#        run: ./gradlew test
+#
+#      - name: Upload test report
+#        uses: actions/upload-artifact@v2
+#        with:
+#          name: unit_test_report
+#          path: app/build/reports/tests/testDebugUnitTest/
 
   instrumentation-test:
-    needs: [ unit-test ]
+#    needs: [ unit-test ]
     runs-on: macos-latest
     steps:
       - name: Checkout the code
@@ -113,9 +113,7 @@ jobs:
         if: always()
         with:
           name: code_coverage_reports
-          path: |
-            /build/coverage-report
-            app/build/reports
+          path: app/build/reports/coverage/
 
       # Upload coverage report to Codacy
 #      - name: Run codacy-coverage-reporter
