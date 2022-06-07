@@ -113,7 +113,7 @@ jobs:
         if: always()
         with:
           name: code_coverage_reports
-          path: app/build/reports/coverage/
+          path: app/build/reports/coverage/debug/
 
       # Upload coverage report to Codacy
 #      - name: Run codacy-coverage-reporter
