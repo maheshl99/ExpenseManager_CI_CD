@@ -105,7 +105,7 @@ jobs:
 
       # Generate jacoco report
       - name: Generate report
-        run: ./gradlew jacoocoTestReport
+        run: ./gradlew jacocoTestReport
 
       # Upload report
       - name: Upload Reports
