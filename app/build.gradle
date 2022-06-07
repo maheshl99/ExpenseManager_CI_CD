@@ -3,7 +3,6 @@ apply plugin: "org.sonarqube"
 apply plugin: 'jacoco'
 
 task jacocoTestReport(type: JacocoReport, dependsOn: 'testDebugUnitTest') {
-
     reports {
         xml.enabled = true
         html.enabled = true
@@ -13,13 +12,6 @@ task jacocoTestReport(type: JacocoReport, dependsOn: 'testDebugUnitTest') {
             fileTree(dir: it, exclude: 'com/blah/**')
         }))
     }
-//    def fileFilter = ['**/R.class', '**/R$*.class', '**/BuildConfig.*', '**/Manifest*.*', '**/*Test*.*', 'android/**/*.*']
-//    def debugTree = fileTree(dir: "${buildDir}/intermediates/classes/debug", excludes: fileFilter)
-//    def mainSrc = "${project.projectDir}/src/main/java"
-//
-//    sourceDirectories = files([mainSrc])
-//    classDirectories = files([debugTree])
-//    executionData = files("${buildDir}/jacoco/testDebugUnitTest.exec")
 }
 
 android {
