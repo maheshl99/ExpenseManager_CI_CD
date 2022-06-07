@@ -30,7 +30,7 @@ jobs:
           path: app/build/reports/lint-results-debug.html
 
   unit-test:
-    needs: [ lint ]
+    needs: [ lint-check ]
     runs-on: ubuntu-latest
     steps:
       - name: Checkout the code
